@@ -54,6 +54,7 @@ void printStack()
 	{
 		printf("%d\t", stack[i]);
 	}
+	printf("\n");
 }
 
 
