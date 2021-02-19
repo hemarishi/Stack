@@ -41,7 +41,7 @@ int pop()
 }
 
 
-int peak()
+int peek()
 {
 	return stack[top];
 }
@@ -100,8 +100,8 @@ void performOperation(int ch)
 		case 3:
 			if((check = isEmpty()) == 0)
 			{
-				data = peak();
-				printf("Peak Value = %d\n", data);
+				data = peek();
+				printf("Last pushed element = %d\n", data);
 			}
 			else{
 				printf("Stack is empty\n");
