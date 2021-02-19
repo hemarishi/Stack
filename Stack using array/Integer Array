@@ -1,0 +1,140 @@
+#include <stdio.h>
+#define SIZE 5
+
+int stack[SIZE];
+
+int top = -1;
+
+int isEmpty()
+{
+	if(top == -1)
+	{
+		return 1;
+	}
+	
+	return 0;
+}
+
+
+int isFull()
+{
+	if(top == SIZE-1)
+	{
+		return 1;
+	}
+	
+	return 0;
+}
+
+
+void push(int data)
+{
+	stack[++top] = data;
+}
+
+
+int pop()
+{
+	int temp = stack[top];
+	top--;
+	return temp;
+}
+
+
+int peak()
+{
+	return stack[top];
+}
+
+void printStack()
+{
+	int i;
+	
+	for(i = 0; i < SIZE; ++i)	
+	{
+		printf("%d\t", stack[i]);
+	}
+}
+
+
+void menu()
+{
+	printf("-------------------MENU----------------\n");
+	printf("1. Push\n");
+	printf("2. Pop\n");
+	printf("3. Peek\n");
+	printf("4. PrintStack\n");
+	printf("0. Exit\n");
+	printf("Enter your choice");	
+}
+
+void performOperation(int ch)
+{
+	int data, check;
+	
+	switch(ch)
+	{
+		case 1:
+			printf("Enter number to push");
+			scanf("%d", &data);
+			if((check = isFull()) == 0)
+			{
+				push(data);
+			}else
+				{
+					printf("Stack is full\n");
+				}
+			break;
+		
+		case 2:
+			if((check = isEmpty()) == 0)
+			{
+				data =  pop();
+				printf("Deleted Value = %d\n", data);
+			}
+			else {
+					printf("Stack is empty\n");
+				}
+			break;
+		
+		case 3:
+			if((check = isEmpty()) == 0)
+			{
+				data = peak();
+				printf("Peak Value = %d\n", data);
+			}
+			else{
+				printf("Stack is empty\n");
+			}
+			break;
+		
+		case 4:	
+			if((check = isEmpty()) == 0)
+			{
+				printStack();
+			}
+			else{
+				printf("Stack is empty\n");
+			}
+			break;	
+		
+		case 0:
+			printf("Exiting...");
+			break;
+	}
+}
+int main()
+{
+	int ch;
+	do
+	{
+		
+		menu();
+		scanf("%d", &ch);
+		performOperation(ch);
+		
+	}while(ch);
+	
+	return 0;
+	
+}
